@@ -18,17 +18,119 @@
             <h1>
                 <i class="fa fa-facebook-square" aria-hidden="true"></i> FriendFinder
             </h1>
-            <hr>
-            <h3>
-                Take our survey to find your perfect friend match!
-            </h3>
-            <div>
-                <a href="/survey">
-                    <button type="button" class="btn btn-lg btn-success">
-                        START SURVEY
-                    </button>
-                </a>
-            </div>
+        </div>
+        <div>
+            <h1>Friend Survey</h1>
+            <form>
+                <h3>Name</h3>
+                <input class="form-control form-control-lg" type="text" id="name">
+                <h3>Picture</h3>
+                <input class="form-control form-control-lg" type="text" placeholder="Enter a web url to your photo" id="photo">
+                <h3>Survey</h3>
+                <p>Rate each of the following statements on a scale of 1 to 5, where 1 means you strongly disagree and 5 means
+                    you strongly agree. There are no wrong answers!</p>
+                <!-- Q1 -->
+                <h4>1. This is the actual statement</h4>
+                <select id="q1">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Somewhat Disagree</option>
+                    <option value="3">3 - Neither Disagree nor Agree</option>
+                    <option value="4">4 - Somewhat Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+
+                <!-- Q2 -->
+                <h4>2. This is the actual statement</h4>
+                <select id="q2">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Somewhat Disagree</option>
+                    <option value="3">3 - Neither Disagree nor Agree</option>
+                    <option value="4">4 - Somewhat Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+
+                <!-- Q3 -->
+                <h4>3. This is the actual statement</h4>
+                <select id="q3">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Somewhat Disagree</option>
+                    <option value="3">3 - Neither Disagree nor Agree</option>
+                    <option value="4">4 - Somewhat Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+
+                <!-- Q4 -->
+                <h4>4. This is the actual statement</h4>
+                <select id="q4">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Somewhat Disagree</option>
+                    <option value="3">3 - Neither Disagree nor Agree</option>
+                    <option value="4">4 - Somewhat Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+
+                <!-- Q5 -->
+                <h4>5. This is the actual statement</h4>
+                <select id="q5">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Somewhat Disagree</option>
+                    <option value="3">3 - Neither Disagree nor Agree</option>
+                    <option value="4">4 - Somewhat Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+
+                <!-- Q6 -->
+                <h4>6. This is the actual statement</h4>
+                <select id="q6">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Somewhat Disagree</option>
+                    <option value="3">3 - Neither Disagree nor Agree</option>
+                    <option value="4">4 - Somewhat Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+
+                <!-- Q7 -->
+                <h4>7. This is the actual statement</h4>
+                <select id="q7">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Somewhat Disagree</option>
+                    <option value="3">3 - Neither Disagree nor Agree</option>
+                    <option value="4">4 - Somewhat Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+
+                <!-- Q8 -->
+                <h4>8. This is the actual statement</h4>
+                <select id="q8">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Somewhat Disagree</option>
+                    <option value="3">3 - Neither Disagree nor Agree</option>
+                    <option value="4">4 - Somewhat Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+
+                <!-- Q9 -->
+                <h4>9. This is the actual statement</h4>
+                <select id="q9">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Somewhat Disagree</option>
+                    <option value="3">3 - Neither Disagree nor Agree</option>
+                    <option value="4">4 - Somewhat Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+
+                <!-- Q10 -->
+                <h4>10. This is the actual statement</h4>
+                <select id="q10">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Somewhat Disagree</option>
+                    <option value="3">3 - Neither Disagree nor Agree</option>
+                    <option value="4">4 - Somewhat Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+                <br><br>
+                    <input class="btn btn-lg btn-success" type="submit" id="friend-maker" value="Find My New Friend">
+            </form>
         </div>
     </div>
     <div class="footer">
@@ -39,6 +141,30 @@
             </p>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $("#friend-maker").click(function (event) {
+            event.preventDefault();
+            var newFriend = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: []
+            }
+
+            for (var i = 1; i <= 10; i++) {
+                newFriend.scores.push($(`#q${i}`).val());
+            }
+
+            console.log(newFriend);
+            
+            //POST to friends.js
+            $.post("/api/friends", newFriend,
+                function (data) {
+
+
+                });
+        })
+    </script>
 </body>
 
 </html>
