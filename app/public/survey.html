@@ -128,8 +128,9 @@
                     <option value="4">4 - Somewhat Agree</option>
                     <option value="5">5 - Strongly Agree</option>
                 </select>
-                <br><br>
-                    <input class="btn btn-lg btn-success" type="submit" id="friend-maker" value="Find My New Friend">
+                <br>
+                <br>
+                <input class="btn btn-lg btn-success" type="submit" id="friend-maker" value="Find My New Friend">
             </form>
         </div>
     </div>
@@ -142,6 +143,29 @@
         </div>
     </div>
 
+    <!-- modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="new-friend-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">We found a match! It's...</h4>
+                </div>
+                <div class="modal-body text-align-center">
+                    <img id="new-friend-photo" src="" style="max-width:250px;">
+                    <h1 id="new-friend-name"></h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- scripts -->
     <script type="text/javascript">
         $("#friend-maker").click(function (event) {
             event.preventDefault();
@@ -156,12 +180,13 @@
             }
 
             console.log(newFriend);
-            
+
             //POST to friends.js
             $.post("/api/friends", newFriend,
                 function (data) {
-
-
+                    $("#new-friend-photo").attr("src", data.photo);
+                    $("#new-friend-name").text(`${data.name}!`);
+                    $("#new-friend-modal").modal();
                 });
         })
     </script>
